@@ -3,6 +3,7 @@ import { restaurant } from '@/lib/restaurant';
 import './globals.css';
 import './sections.css';
 import './hero-refinement.css';
+import './hero-polish.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(restaurant.origin),
