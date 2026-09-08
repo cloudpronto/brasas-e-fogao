@@ -1,28 +1,48 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { restaurant } from '@/lib/restaurant';
 
-type Dish = 'choripan' | 'feijoada';
+type Dish = 'feijoada' | 'choripan';
 
 const dishes = [
-  {
-    id: 'choripan' as const,
-    src: '/images/choripan-hero.webp',
-    alt: 'Choripán com linguiça grelhada e chimichurri em pão rústico',
-  },
   {
     id: 'feijoada' as const,
     src: '/images/feijoada-hero.webp',
     alt: 'Feijoada com arroz, couve e farofa em uma travessa rústica',
   },
+  {
+    id: 'choripan' as const,
+    src: '/images/choripan-hero.webp',
+    alt: 'Choripán com linguiça grelhada e chimichurri em pão rústico',
+  },
 ];
 
+function getNextDish(dish: Dish): Dish {
+  return dish === 'feijoada' ? 'choripan' : 'feijoada';
+}
+
 export function Hero() {
-  const [activeDish, setActiveDish] = useState<Dish>('choripan');
-  const nextDish = activeDish === 'choripan' ? 'feijoada' : 'choripan';
+  const [activeDish, setActiveDish] = useState<Dish>('feijoada');
+  const [isPaused, setIsPaused] = useState(false);
+  const nextDish = getNextDish(activeDish);
+
+  useEffect(() => {
+    if (
+      isPaused ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setActiveDish((currentDish) => getNextDish(currentDish));
+    }, 5000);
+
+    return () => window.clearTimeout(timer);
+  }, [activeDish, isPaused]);
 
   return (
     <section className="hero" id="inicio" aria-labelledby="hero-title">
@@ -39,7 +59,7 @@ export function Hero() {
               width={1672}
               height={941}
               alt={dish.alt}
-              fetchPriority={dish.id === 'choripan' ? 'high' : 'auto'}
+              fetchPriority={dish.id === 'feijoada' ? 'high' : 'auto'}
             />
           </div>
         ))}
@@ -71,6 +91,10 @@ export function Hero() {
         type="button"
         data-dish={activeDish}
         onClick={() => setActiveDish(nextDish)}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onFocus={() => setIsPaused(true)}
+        onBlur={() => setIsPaused(false)}
         aria-label={`Mostrar ${nextDish === 'feijoada' ? 'a feijoada' : 'o Choripán ao Chimichurri'}`}
       >
         <span className="hero-switch-dot" aria-hidden="true" />

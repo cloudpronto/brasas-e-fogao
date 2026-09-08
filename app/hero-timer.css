@@ -1,0 +1,13 @@
+.hero-dish-switch[data-dish='feijoada'] .hero-switch-dot {
+  transform: translateX(-50%);
+}
+
+.hero-dish-switch[data-dish='choripan'] .hero-switch-dot {
+  transform: translate(-50%, 34px);
+}
+
+@media (max-width: 700px) {
+  .hero-dish-switch[data-dish='choripan'] .hero-switch-dot {
+    transform: translate(-50%, 29px);
+  }
+}
