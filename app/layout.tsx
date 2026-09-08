@@ -4,6 +4,7 @@ import './globals.css';
 import './sections.css';
 import './hero-refinement.css';
 import './hero-polish.css';
+import './hero-slider.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(restaurant.origin),
