@@ -1,3 +1,4 @@
+import { publicAsset } from '@/lib/assets';
 import Image from 'next/image';
 import Link from 'next/link';
 import { menuItemCount } from '@/lib/menu';
@@ -33,7 +34,7 @@ export function MenuPreview() {
           <figure className="menu-preview-tile menu-preview-tile-tall">
             <Image
               unoptimized
-              src="/images/pao-de-queijo.webp"
+              src={publicAsset('/images/pao-de-queijo.webp')}
               alt="Pães de queijo dourados do Brasas e Fogão"
               width={1000}
               height={1778}
@@ -44,7 +45,7 @@ export function MenuPreview() {
           <figure className="menu-preview-tile">
             <Image
               unoptimized
-              src="/images/coxinhas.webp"
+              src={publicAsset('/images/coxinhas.webp')}
               alt="Coxinhas da casa"
               width={1000}
               height={1778}
@@ -55,7 +56,7 @@ export function MenuPreview() {
           <figure className="menu-preview-tile menu-preview-tile-table">
             <Image
               unoptimized
-              src="/images/panelas.webp"
+              src={publicAsset('/images/panelas.webp')}
               alt="Arroz, farofa e couve servidos nas panelas do Brasas e Fogão"
               width={1200}
               height={800}
@@ -91,7 +92,7 @@ export function MenuPreview() {
             </Link>
             <a
               className="button menu-preview-pdf"
-              href="/cardapio-brasas-e-fogao.pdf"
+              href={publicAsset('/cardapio-brasas-e-fogao.pdf')}
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -49,4 +49,17 @@ npm ci
 npm run dev
 ```
 
-O repositório é privado e pertence à organização CloudPronto no GitHub. A publicação no GitHub versiona o código; a hospedagem continua no Sites / Cloudflare Workers.
+O repositório é público e pertence à organização CloudPronto no GitHub. O site é publicado no GitHub Pages a cada push na branch `main`.
+
+
+## GitHub Pages
+
+Site: https://cloudpronto.github.io/brasas-e-fogao/
+
+O workflow `.github/workflows/pages.yml` instala as dependências, gera a exportação estática, confere os caminhos dos arquivos e publica pelo GitHub Actions. Em Settings > Pages, a origem deve ser **GitHub Actions**.
+
+- `npm run build:pages`: gera e valida a versão estática em `out/`.
+- `npm run verify:pages`: repete a verificação dos arquivos já exportados.
+- `npm run dev` e `npm run build`: continuam usando Vinext para desenvolvimento e Sites / Cloudflare Workers.
+
+O build do Pages usa Next.js, imagens locais sem otimização no servidor, fontes locais e URLs com o prefixo `/brasas-e-fogao`. O workflow obtém `NEXT_PUBLIC_BASE_PATH` e `NEXT_PUBLIC_SITE_URL` da configuração do Pages. Para testar outro domínio ou caminho, defina essas variáveis antes do build. O build local usa o endereço acima por padrão.

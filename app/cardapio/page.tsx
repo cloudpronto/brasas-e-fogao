@@ -8,16 +8,16 @@ export const metadata: Metadata = {
   title: 'Cardápio | Brasas e Fogão em Goiânia',
   description:
     'Confira o cardápio do Brasas e Fogão no Setor Oeste, em Goiânia: lanches, cafeteria, quitandas, pastéis, espetos, acompanhamentos e bebidas.',
-  alternates: { canonical: '/cardapio' },
+  alternates: { canonical: `${restaurant.origin}/cardapio/` },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
     title: 'Cardápio do Brasas e Fogão em Goiânia',
     description:
       'Lanches, cafeteria, quitandas, pastéis, espetos, acompanhamentos e bebidas no Setor Oeste.',
-    url: '/cardapio',
+    url: `${restaurant.origin}/cardapio/`,
     siteName: restaurant.name,
-    images: ['/images/choripan-hero.webp'],
+    images: [`${restaurant.origin}/images/choripan-hero.webp`],
   },
 };
 

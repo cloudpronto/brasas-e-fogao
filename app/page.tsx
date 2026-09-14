@@ -1,3 +1,4 @@
+import { publicAsset } from '@/lib/assets';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Clock3, MapPin } from 'lucide-react';
@@ -37,7 +38,7 @@ export default function Home() {
             <div className="house-picture" data-reveal>
               <Image
                 unoptimized
-                src="/images/panelas.webp"
+                src={publicAsset('/images/panelas.webp')}
                 alt="Panelas e acompanhamentos preparados pelo Brasas e Fogão"
                 width="1200"
                 height="800"

@@ -3,7 +3,7 @@ export const restaurant = {
   slogan: 'Fogo na brasa. Gente à mesa.',
   description:
     'Boa comida e bons encontros. Cafeteria, quitandas, lanches, feijoada e espetos no Setor Oeste, em Goiânia.',
-  origin: 'https://brasas-e-fogao-brasa-noturna.diipass.chatgpt.site',
+  origin: (process.env.NEXT_PUBLIC_SITE_URL || 'https://brasas-e-fogao-brasa-noturna.diipass.chatgpt.site').replace(/\/$/, ''),
   street: 'Rua 22, 658 — quadra K9, lote 05',
   neighborhood: 'Setor Oeste',
   city: 'Goiânia',

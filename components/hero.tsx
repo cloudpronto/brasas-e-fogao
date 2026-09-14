@@ -1,5 +1,6 @@
 'use client';
 
+import { publicAsset } from '@/lib/assets';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -55,7 +56,7 @@ export function Hero() {
           >
             <Image
               unoptimized
-              src={dish.src}
+              src={publicAsset(dish.src)}
               width={1672}
               height={941}
               alt={dish.alt}

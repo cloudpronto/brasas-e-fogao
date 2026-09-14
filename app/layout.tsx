@@ -1,5 +1,7 @@
+import { publicAsset } from '@/lib/assets';
 import type { Metadata } from 'next';
 import { restaurant } from '@/lib/restaurant';
+import { fontFaceCss } from '@/lib/fonts';
 import './globals.css';
 import './sections.css';
 import './menu-pages.css';
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(restaurant.origin),
   title: 'Brasas e Fogão | Restaurante no Setor Oeste, Goiânia',
   description: restaurant.description,
-  alternates: { canonical: '/' },
+  alternates: { canonical: `${restaurant.origin}/` },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
     title: 'Brasas e Fogão — Goiânia',
     description: restaurant.description,
   },
-  icons: { icon: '/favicon.svg' },
+  icons: { icon: publicAsset('/favicon.svg') },
 };
 
 export default function RootLayout({
@@ -35,16 +37,17 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark">
       <head>
+        <style>{fontFaceCss}</style>
         <link
           rel="preload"
-          href="/fonts/bodoni-moda-700.woff2"
+          href={publicAsset('/fonts/bodoni-moda-700.woff2')}
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/fonts/six-caps-400.woff2"
+          href={publicAsset('/fonts/six-caps-400.woff2')}
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

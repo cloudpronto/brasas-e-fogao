@@ -1,5 +1,6 @@
 'use client';
 
+import { publicAsset } from '@/lib/assets';
 import Image from 'next/image';
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import { Accordion as AccordionPrimitive } from '@base-ui/react/accordion';
@@ -151,7 +152,7 @@ export function MenuSection() {
                   <figure className="menu-bread-photo" aria-hidden="true">
                     <Image
                       unoptimized
-                      src="/images/menu-pao-de-queijo.webp"
+                      src={publicAsset('/images/menu-pao-de-queijo.webp')}
                       alt=""
                       width={1536}
                       height={1024}
@@ -165,7 +166,7 @@ export function MenuSection() {
       </Accordion>
       <div className="menu-download">
         <a
-          href="/cardapio-brasas-e-fogao.pdf"
+          href={publicAsset('/cardapio-brasas-e-fogao.pdf')}
           target="_blank"
           rel="noopener noreferrer"
         >
