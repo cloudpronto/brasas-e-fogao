@@ -20,11 +20,13 @@ O projeto requer Node.js 22.13 ou posterior.
 
 - `lib/restaurant.ts`: endereço, horários, link do mapa e Instagram.
 - `lib/menu.ts`: categorias, itens e preços. Os 59 preços vieram de `Cardapio-1.pdf`; a feijoada foi confirmada pelo proprietário e permanece sem preço até confirmação.
+- `app/cardapio/page.tsx`: página completa do cardápio, com categorias expansíveis.
+- `public/cardapio-brasas-e-fogao.pdf`: cardápio em PDF para baixar.
 - `lib/structured-data.ts`: dados estruturados de restaurante e menu, derivados do conteúdo exibido.
 - `components/brand.tsx`: chama ancorada na letra E por CSS.
 - `app/globals.css`, `app/sections.css` e `app/hero-refinement.css`: direção visual, seções, hero e adaptação para celular.
 
-O link do mapa e os horários foram fornecidos pelo usuário: Rua 22, 658, quadra K9, lote 05, Setor Oeste, Goiânia, GO, 74120-130. Segunda a sábado, 7h às 18h.
+O link do mapa e os horários foram fornecidos pelo usuário: Rua 22, 658, quadra K9, lote 05, Setor Oeste, Goiânia, GO, 74120-130. Segunda a sábado, 7h às 16h.
 
 ## Imagens e fontes
 
@@ -35,3 +37,16 @@ Não há checkout, pedidos, reservas, rastreamento ou formulários. A experiênc
 ## Publicação e SEO
 
 A configuração de hospedagem fica em `.openai/hosting.json`. O site inclui metadados em português, canonical, sitemap, robots e JSON-LD. Uma publicação privada do Sites é uma prévia de revisão e não é indexável publicamente. Antes do lançamento público, atualize `restaurant.origin` para o domínio definitivo e confirme preços, endereço, horários e acesso público.
+
+## Repositório no GitHub
+
+Código da versão atual: https://github.com/cloudpronto/brasas-e-fogao
+
+```bash
+git clone https://github.com/cloudpronto/brasas-e-fogao.git
+cd brasas-e-fogao
+npm ci
+npm run dev
+```
+
+O repositório é privado e pertence à organização CloudPronto no GitHub. A publicação no GitHub versiona o código; a hospedagem continua no Sites / Cloudflare Workers.

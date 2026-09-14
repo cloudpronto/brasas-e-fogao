@@ -353,6 +353,27 @@
   color: #715e4b;
   margin: 28px 0 0;
 }
+.location-map {
+  margin-bottom: 48px;
+  overflow: hidden;
+  border: 1px solid #271c1333;
+  border-radius: 3px;
+  background: #e5dccb;
+}
+.location-map iframe {
+  display: block;
+  width: 100%;
+  height: 420px;
+  border: 0;
+}
+@media (max-width: 700px) {
+  .location-map {
+    margin-bottom: 32px;
+  }
+  .location-map iframe {
+    height: 320px;
+  }
+}
 .location-section a:focus-visible {
   outline-color: #9f340d;
 }
@@ -381,11 +402,21 @@
   gap: 12px;
   font-size: 14px;
 }
+.social-link svg {
+  color: #e85c20;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+.instagram-icon-dot {
+  fill: currentColor;
+  stroke: none;
+}
 .social-link:hover {
   color: #ee925d;
 }
 .footer-bottom {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 22px;
   border-top: 1px solid var(--border);
@@ -393,8 +424,33 @@
   font-size: 11px;
   color: #a18c74;
 }
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
 .footer-bottom a {
   color: #c8b59c;
+}
+.footer-credit {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+  padding-top: 0;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+}
+.footer-credit a {
+  color: #786a59;
+  transition: color 180ms ease;
+}
+.footer-credit a:hover,
+.footer-credit a:focus-visible {
+  color: #c8b59c;
+}
+.footer-credit strong {
+  color: #a9967e;
+  font-weight: 600;
 }
 .reveal-ready {
   opacity: 0;
@@ -685,20 +741,20 @@
     font-size: 13px;
   }
   .footer-bottom {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 9px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
     font-size: 10px;
     padding-top: 22px;
   }
-  .footer-bottom span:nth-child(2) {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  .footer-bottom a {
-    grid-column: 2;
-    grid-row: 1/3;
-    align-self: center;
+  .footer-actions {
+    width: 100%;
+    margin-top: 10px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 24px;
   }
   .not-found {
     padding-bottom: 70px;

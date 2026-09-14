@@ -1,9 +1,10 @@
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight, Clock3, MapPin, Camera } from 'lucide-react';
+import Link from 'next/link';
+import { Clock3, MapPin } from 'lucide-react';
 import { SiteHeader } from '@/components/site-header';
 import { Hero } from '@/components/hero';
-import { Brand } from '@/components/brand';
-import { MenuSection } from '@/components/menu-section';
+import { SiteFooter } from '@/components/site-footer';
+import { MenuPreview } from '@/components/menu-preview';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { restaurant } from '@/lib/restaurant';
 import { structuredData } from '@/lib/structured-data';
@@ -11,22 +12,22 @@ import { structuredData } from '@/lib/structured-data';
 export default function Home() {
   return (
     <>
-      <a className="skip-link" href="#cardapio">
-        Pular para o cardápio
+      <a className="skip-link" href="#conteudo-principal">
+        Pular para o conteúdo
       </a>
       <SiteHeader />
-      <main>
+      <main id="conteudo-principal">
         <Hero />
         <div className="welcome-line container">
           <span>Setor Oeste, Goiânia</span>
           <span>
             Segunda a sábado <i /> 7h às 18h
           </span>
-          <a href="#cardapio" aria-label="Explorar o cardápio abaixo">
-            À mesa <ArrowRight size={22} aria-hidden="true" />
-          </a>
+          <Link href="/cardapio" aria-label="Abrir o cardápio completo">
+            À mesa
+          </Link>
         </div>
-        <MenuSection />
+        <MenuPreview />
         <section
           className="house-section section"
           id="a-casa"
@@ -68,7 +69,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Conheça nossa história <ArrowUpRight size={20} />
+                Conheça nossa história
               </a>
             </div>
           </div>
@@ -87,6 +88,17 @@ export default function Home() {
                 no Setor Oeste.
               </h2>
             </div>
+            <div className="location-map">
+              <iframe
+                src={restaurant.mapsEmbedUrl}
+                title="Google Maps — localização do Brasas e Fogão na Rua 22, 658, Setor Oeste, Goiânia"
+                width="1200"
+                height="420"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
             <div className="location-grid">
               <div className="location-detail">
                 <MapPin aria-hidden="true" />
@@ -103,7 +115,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Traçar rota <ArrowUpRight size={20} aria-hidden="true" />
+                    Traçar rota
                   </a>
                 </div>
               </div>
@@ -125,31 +137,11 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="site-footer">
-        <div className="container footer-top">
-          <Brand />
-          <p>Boa comida e bons encontros.</p>
-          <a
-            className="social-link"
-            href={restaurant.instagramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Camera size={20} aria-hidden="true" />
-            <span>@brasasefogao</span>
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
-        </div>
-        <div className="container footer-bottom">
-          <span>© {new Date().getFullYear()} Brasas e Fogão</span>
-          <span>Setor Oeste · Goiânia, GO</span>
-          <a href="#inicio">Voltar ao início ↑</a>
-        </div>
-      </footer>
+      <SiteFooter />
       <div className="mobile-dock">
-        <a href="#cardapio" className="button">
+        <Link href="/cardapio" className="button">
           Ver cardápio
-        </a>
+        </Link>
       </div>
       <ScrollReveal />
       <script

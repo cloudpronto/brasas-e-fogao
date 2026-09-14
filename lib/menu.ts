@@ -1,4 +1,4 @@
-export type MenuItem = { name: string; price: number | null; detail?: string };
+export type MenuItem = { name: string; price: number; detail?: string };
 export type MenuCategory = { id: string; title: string; items: MenuItem[] };
 
 export const menu: MenuCategory[] = [
@@ -19,7 +19,7 @@ export const menu: MenuCategory[] = [
     id: 'cafeteria',
     title: 'Cafeteria',
     items: [
-      { name: 'Café expresso', price: 5 },
+      { name: 'Café espresso', price: 5 },
       { name: 'Café com leite', price: 7 },
       { name: 'Cappuccino', price: 10 },
       { name: 'Cappuccino com canela', price: 10 },
@@ -73,20 +73,13 @@ export const menu: MenuCategory[] = [
     ],
   },
   {
-    id: 'especiais',
-    title: 'Da casa',
-    items: [
-      { name: 'Choripão ao chimichurri', price: 12 },
-      {
-        name: 'Feijoada',
-        detail: 'Consulte o valor e a disponibilidade na casa.',
-        price: null,
-      },
-    ],
+    id: 'especial-da-casa',
+    title: 'Especial da casa',
+    items: [{ name: 'Choripan ao chimichurri', price: 12 }],
   },
   {
     id: 'acompanhamentos',
-    title: 'Acompanhamentos',
+    title: 'Acompanhamentos opcionais',
     items: [
       { name: 'Mandioca ao molho branco', price: 8 },
       { name: 'Vinagrete', price: 5 },
@@ -95,26 +88,37 @@ export const menu: MenuCategory[] = [
     ],
   },
   {
-    id: 'bebidas',
-    title: 'Bebidas',
+    id: 'sem-alcool',
+    title: 'Bebidas sem álcool',
     items: [
       { name: 'Água mineral com gás', price: 4 },
       { name: 'Água mineral sem gás', price: 4 },
       { name: 'Suco Honest', price: 9 },
       { name: 'Refrigerante em lata', price: 8 },
-      { name: 'Água de coco', detail: '200 ml', price: 4 },
+      { name: 'Água de coco 200 ml', price: 4 },
       { name: 'Toddynho', price: 4 },
-      { name: 'Coca-Cola', detail: '600 ml', price: 10 },
-      { name: 'Guaraná Mineiro', detail: '600 ml', price: 9 },
+      { name: 'Coca-Cola 600 ml', price: 10 },
+      { name: 'Guaraná Mineiro 600 ml', price: 9 },
       { name: 'Gatorade', price: 10 },
-      { name: 'Monster', detail: '473 ml', price: 15 },
-      { name: 'Extra Power', detail: '270 ml', price: 9 },
-      { name: 'Cerveja Heineken', price: 10 },
-      { name: 'Cerveja Amstel', price: 10 },
-      { name: 'Cerveja Stella Artois', price: 10 },
+      { name: 'Monster 473 ml', price: 15 },
+      { name: 'Extra Power 270 ml', price: 9 },
+    ],
+  },
+  {
+    id: 'cervejas',
+    title: 'Cervejas',
+    items: [
+      { name: 'Heineken', price: 10 },
+      { name: 'Amstel', price: 10 },
+      { name: 'Stella Artois', price: 10 },
     ],
   },
 ];
+
+export const menuItemCount = menu.reduce(
+  (total, category) => total + category.items.length,
+  0,
+);
 
 export const formatPrice = (price: number) =>
   new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(

@@ -1,0 +1,4 @@
+# Preserve binary assets on every operating system.
+*.pdf binary
+*.webp binary
+*.woff2 binary

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import { restaurant } from '@/lib/restaurant';
 
 type Dish = 'feijoada' | 'choripan';
@@ -16,7 +16,7 @@ const dishes = [
   {
     id: 'choripan' as const,
     src: '/images/choripan-hero.webp',
-    alt: 'Choripán com linguiça grelhada e chimichurri em pão rústico',
+    alt: 'Choripan com linguiça grelhada e chimichurri em pão rústico',
   },
 ];
 
@@ -69,20 +69,20 @@ export function Hero() {
         <p className="eyebrow">Restaurante em Goiânia</p>
         <h1 className="hero-title" id="hero-title">
           <span>Fogo na brasa.</span>
-          <span>Gente à mesa.</span>
+          <span>Gente a mesa.</span>
         </h1>
         <p className="hero-description">Boa comida e bons encontros.</p>
         <div className="hero-actions">
-          <a className="button button-hero" href="#cardapio">
+          <Link className="button button-hero" href="/cardapio">
             Explorar cardápio
-          </a>
+          </Link>
           <a
             className="text-link"
             href={restaurant.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Como chegar <ArrowRight aria-hidden="true" />
+            Como chegar
           </a>
         </div>
       </div>
@@ -95,7 +95,7 @@ export function Hero() {
         onMouseLeave={() => setIsPaused(false)}
         onFocus={() => setIsPaused(true)}
         onBlur={() => setIsPaused(false)}
-        aria-label={`Mostrar ${nextDish === 'feijoada' ? 'a feijoada' : 'o Choripán ao Chimichurri'}`}
+        aria-label={`Mostrar ${nextDish === 'feijoada' ? 'a feijoada' : 'o Choripan ao chimichurri'}`}
       >
         <span className="hero-switch-dot" aria-hidden="true" />
       </button>

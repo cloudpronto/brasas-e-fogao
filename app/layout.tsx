@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { restaurant } from '@/lib/restaurant';
 import './globals.css';
 import './sections.css';
+import './menu-pages.css';
 import './hero-refinement.css';
 import './hero-polish.css';
 import './hero-slider.css';

@@ -34,14 +34,15 @@ export const structuredData = {
         'Saturday',
       ],
       opens: '07:00',
-      closes: '18:00',
+      closes: '16:00',
     },
   ],
   sameAs: [restaurant.instagramUrl],
+  menu: `${restaurant.origin}/cardapio`,
   hasMenu: {
     '@type': 'Menu',
     name: 'Cardápio Brasas e Fogão',
-    url: `${restaurant.origin}/#cardapio`,
+    url: `${restaurant.origin}/cardapio`,
     inLanguage: 'pt-BR',
     hasMenuSection: menu.map((category) => ({
       '@type': 'MenuSection',
@@ -50,15 +51,11 @@ export const structuredData = {
         '@type': 'MenuItem',
         name: item.name,
         ...(item.detail ? { description: item.detail } : {}),
-        ...(item.price === null
-          ? {}
-          : {
-              offers: {
-                '@type': 'Offer',
-                price: item.price.toFixed(2),
-                priceCurrency: 'BRL',
-              },
-            }),
+        offers: {
+          '@type': 'Offer',
+          price: item.price.toFixed(2),
+          priceCurrency: 'BRL',
+        },
       })),
     })),
   },

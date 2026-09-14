@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 import { useState } from 'react';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import {
   Sheet,
   SheetTrigger,
@@ -12,16 +13,27 @@ import {
 import { Brand } from '@/components/brand';
 import { restaurant } from '@/lib/restaurant';
 
-export function SiteHeader() {
+export function SiteHeader({ compact = false }: { compact?: boolean }) {
   const [open, setOpen] = useState(false);
   return (
-    <header className="site-header">
+    <header className={`site-header${compact ? ' site-header-compact' : ''}`}>
       <div className="header-inner container">
-        <Brand />
+        {compact ? (
+          <div className="menu-header-brand">
+            <Brand />
+            <span>
+              {restaurant.neighborhood} · {restaurant.city}
+            </span>
+          </div>
+        ) : (
+          <Brand />
+        )}
         <nav className="desktop-nav" aria-label="Navegação principal">
-          <a href="#cardapio">Cardápio</a>
-          <a href="#a-casa">A casa</a>
-          <a href="#localizacao">Localização</a>
+          <Link href="/cardapio" aria-current={compact ? 'page' : undefined}>
+            Cardápio
+          </Link>
+          <Link href="/#a-casa">A casa</Link>
+          <Link href="/#localizacao">Localização</Link>
         </nav>
         <a
           className="button button-header"
@@ -46,15 +58,19 @@ export function SiteHeader() {
               Boa comida e bons encontros.
             </SheetDescription>
             <nav aria-label="Menu do celular" className="sheet-navigation">
-              <a href="#cardapio" onClick={() => setOpen(false)}>
+              <Link
+                href="/cardapio"
+                aria-current={compact ? 'page' : undefined}
+                onClick={() => setOpen(false)}
+              >
                 Cardápio <span>01</span>
-              </a>
-              <a href="#a-casa" onClick={() => setOpen(false)}>
+              </Link>
+              <Link href="/#a-casa" onClick={() => setOpen(false)}>
                 A casa <span>02</span>
-              </a>
-              <a href="#localizacao" onClick={() => setOpen(false)}>
+              </Link>
+              <Link href="/#localizacao" onClick={() => setOpen(false)}>
                 Localização <span>03</span>
-              </a>
+              </Link>
             </nav>
             <div className="sheet-bottom">
               <p>Setor Oeste · Goiânia</p>
@@ -65,7 +81,7 @@ export function SiteHeader() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Como chegar <ArrowUpRight size={18} />
+                Como chegar
               </a>
             </div>
           </SheetContent>
