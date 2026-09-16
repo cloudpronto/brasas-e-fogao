@@ -13,7 +13,13 @@ import {
 import { Brand } from '@/components/brand';
 import { restaurant } from '@/lib/restaurant';
 
-export function SiteHeader({ compact = false }: { compact?: boolean }) {
+export function SiteHeader({
+  compact = false,
+  current,
+}: {
+  compact?: boolean;
+  current?: 'eventos';
+}) {
   const [open, setOpen] = useState(false);
   return (
     <header className={`site-header${compact ? ' site-header-compact' : ''}`}>
@@ -32,7 +38,12 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
           <Link href="/cardapio" aria-current={compact ? 'page' : undefined}>
             Cardápio
           </Link>
-          <Link href="/#a-casa">A casa</Link>
+          <Link
+            href="/eventos"
+            aria-current={current === 'eventos' ? 'page' : undefined}
+          >
+            Eventos
+          </Link>
           <Link href="/#localizacao">Localização</Link>
         </nav>
         <a
@@ -65,8 +76,12 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
               >
                 Cardápio <span>01</span>
               </Link>
-              <Link href="/#a-casa" onClick={() => setOpen(false)}>
-                A casa <span>02</span>
+              <Link
+                href="/eventos"
+                aria-current={current === 'eventos' ? 'page' : undefined}
+                onClick={() => setOpen(false)}
+              >
+                Eventos <span>02</span>
               </Link>
               <Link href="/#localizacao" onClick={() => setOpen(false)}>
                 Localização <span>03</span>
@@ -75,6 +90,15 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
             <div className="sheet-bottom">
               <p>Setor Oeste · Goiânia</p>
               <p>{restaurant.hours}</p>
+              <p>
+                <a
+                  href={restaurant.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  WhatsApp {restaurant.phone}
+                </a>
+              </p>
               <a
                 className="button"
                 href={restaurant.mapsUrl}

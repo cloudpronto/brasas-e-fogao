@@ -232,50 +232,6 @@
   font-size: 12px;
   line-height: 1.7;
 }
-.house-section {
-  background: #1a130e;
-  padding-block: 120px;
-}
-.house-layout {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: clamp(50px, 7vw, 110px);
-  align-items: center;
-}
-.house-picture {
-  position: relative;
-  height: 520px;
-}
-.house-picture img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  object-position: 45% center;
-}
-.photo-corner {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background: #c74310;
-  padding: 18px 24px;
-  color: #fff2dc;
-  font-size: 12px;
-  letter-spacing: 0.3px;
-}
-.house-copy .display-title {
-  font-size: clamp(65px, 5.3vw, 90px);
-  margin-bottom: 30px;
-}
-.house-copy > p:not(.eyebrow) {
-  color: #c7b59d;
-  line-height: 1.85;
-  font-size: 16px;
-  margin: 0 0 18px;
-  max-width: 500px;
-}
-.house-copy .text-link {
-  margin-top: 19px;
-}
 .location-section {
   background: #f1e7d5;
   color: #271c13;
@@ -292,7 +248,7 @@
 }
 .location-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid #271c1333;
   padding-top: 44px;
 }
@@ -309,9 +265,9 @@
   margin-top: 4px;
   flex-shrink: 0;
 }
-.location-detail:nth-child(2) {
+.location-detail + .location-detail {
   border-left: 1px solid #271c1333;
-  padding-left: clamp(40px, 7vw, 112px);
+  padding-left: clamp(32px, 4vw, 64px);
 }
 .location-detail h3 {
   text-transform: uppercase;
@@ -395,6 +351,12 @@
   font-size: 14px;
   color: #bcaa91;
   margin: 0;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 36px;
 }
 .social-link {
   display: flex;
@@ -491,9 +453,6 @@
   .menu-photos {
     max-width: 530px;
   }
-  .house-picture {
-    height: 590px;
-  }
 }
 @media (max-width: 1000px) {
   .section {
@@ -514,18 +473,21 @@
     height: 215px;
     width: 68%;
   }
-  .house-layout {
-    gap: 42px;
-    grid-template-columns: 1fr 1fr;
-  }
-  .house-picture {
-    height: 470px;
-  }
   .location-detail {
     gap: 18px;
   }
-  .location-detail:nth-child(2) {
+  .location-grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px;
+  }
+  .location-detail + .location-detail {
     padding-left: 35px;
+  }
+  .location-detail:nth-child(3) {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid #271c1333;
+    padding: 40px 0 0;
   }
   .location-detail address strong,
   .hours strong {
@@ -654,30 +616,6 @@
   .menu-footnote {
     font-size: 11px;
   }
-  .house-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 38px;
-    align-items: stretch;
-  }
-  .house-picture {
-    height: 320px;
-  }
-  .photo-corner {
-    font-size: 10px;
-    padding: 16px 18px;
-  }
-  .house-copy .display-title {
-    font-size: 72px;
-    margin-bottom: 26px;
-  }
-  .house-copy > p:not(.eyebrow) {
-    font-size: 15px;
-    line-height: 1.8;
-  }
-  .house-copy .text-link {
-    margin-top: 12px;
-  }
   .location-heading {
     margin-bottom: 33px;
   }
@@ -713,7 +651,8 @@
     font-size: 14px;
     margin-top: 23px;
   }
-  .location-detail:nth-child(2) {
+  .location-detail + .location-detail,
+  .location-detail:nth-child(3) {
     border-left: 0;
     border-top: 1px solid #271c1326;
     padding: 29px 0 0;
@@ -776,7 +715,6 @@
   .menu-photos .menu-photo-small {
     height: 165px;
   }
-  .house-copy .display-title,
   .location-heading .display-title {
     font-size: 65px;
   }

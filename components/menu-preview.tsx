@@ -1,25 +1,37 @@
 import { publicAsset } from '@/lib/assets';
 import Image from 'next/image';
 import Link from 'next/link';
-import { menuItemCount } from '@/lib/menu';
+import { formatPrice, menu, menuItemCount } from '@/lib/menu';
+
+function countItems(ids: string[]) {
+  return menu
+    .filter((category) => ids.includes(category.id))
+    .reduce((total, category) => total + category.items.length, 0);
+}
+
+const lunchItems = menu.find((category) => category.id === 'almoco')!.items;
 
 const menuGroups = [
   {
     label: 'Lanches & cafeteria',
-    count: 13,
+    count: countItems(['lanches', 'cafeteria']),
     href: '/cardapio#categoria-lanches',
   },
   {
     label: 'Quitandas & pastéis',
-    count: 16,
+    count: countItems(['quitandas', 'pasteis']),
     href: '/cardapio#categoria-quitandas',
   },
   {
-    label: 'Espetos & acompanhamentos',
-    count: 16,
+    label: 'Espetinhos & acompanhamentos',
+    count: countItems(['espetos', 'especial-da-casa', 'acompanhamentos']),
     href: '/cardapio#categoria-espetos',
   },
-  { label: 'Bebidas', count: 14, href: '/cardapio#categoria-sem-alcool' },
+  {
+    label: 'Bebidas',
+    count: countItems(['sem-alcool', 'cervejas']),
+    href: '/cardapio#categoria-sem-alcool',
+  },
 ];
 
 export function MenuPreview() {
@@ -42,27 +54,27 @@ export function MenuPreview() {
             />
             <figcaption>Pão de queijo</figcaption>
           </figure>
-          <figure className="menu-preview-tile">
+          <figure className="menu-preview-tile menu-preview-tile-plate">
             <Image
               unoptimized
-              src={publicAsset('/images/coxinhas.webp')}
-              alt="Coxinhas da casa"
-              width={1000}
-              height={1778}
+              src={publicAsset('/images/feijoada-prato.webp')}
+              alt="Prato de feijoada com arroz, couve e farofa servido no Brasas e Fogão"
+              width={900}
+              height={1200}
               loading="lazy"
             />
-            <figcaption>Coxinhas</figcaption>
+            <figcaption>Feijoada</figcaption>
           </figure>
-          <figure className="menu-preview-tile menu-preview-tile-table">
+          <figure className="menu-preview-tile menu-preview-tile-drinks">
             <Image
               unoptimized
-              src={publicAsset('/images/panelas.webp')}
-              alt="Arroz, farofa e couve servidos nas panelas do Brasas e Fogão"
-              width={1200}
-              height={800}
+              src={publicAsset('/images/sucos-honest.webp')}
+              alt="Garrafas de suco Honest de morango com maracujá e frutas vermelhas"
+              width={900}
+              height={1329}
               loading="lazy"
             />
-            <figcaption>Comida da casa</figcaption>
+            <figcaption>Sucos Honest</figcaption>
           </figure>
         </div>
         <div className="menu-preview-copy" data-reveal>
@@ -74,8 +86,26 @@ export function MenuPreview() {
           </h2>
           <p>
             Do primeiro café ao encontro à mesa. Conheça nossas {menuItemCount}{' '}
-            opções entre lanches, quitandas, espetos e bebidas.
+            opções entre almoço, lanches, quitandas, espetinhos e bebidas.
           </p>
+          <div className="menu-preview-lunch">
+            <p className="menu-preview-lunch-heading">
+              <Link href="/cardapio#categoria-almoco">Almoço</Link>
+              <span>Churrasco de segunda a quinta, feijoada na sexta</span>
+            </p>
+            <dl>
+              {lunchItems.map((item) => (
+                <div key={item.name}>
+                  <dt>{item.name}</dt>
+                  <dd>
+                    {item.price === undefined
+                      ? 'Consulte'
+                      : formatPrice(item.price)}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
           <ul className="menu-preview-groups" aria-label="Grupos do cardápio">
             {menuGroups.map((group) => (
               <li key={group.label}>

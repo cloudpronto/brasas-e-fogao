@@ -1,7 +1,21 @@
-export type MenuItem = { name: string; price: number; detail?: string };
+/** Itens sem `price` aparecem como "Consulte" até o valor ser confirmado. */
+export type MenuItem = { name: string; price?: number; detail?: string };
 export type MenuCategory = { id: string; title: string; items: MenuItem[] };
 
 export const menu: MenuCategory[] = [
+  {
+    id: 'almoco',
+    title: 'Almoço',
+    items: [
+      {
+        name: 'Prato executivo',
+        detail:
+          'Montado pela nossa equipe. Churrasco de segunda a quinta, feijoada na sexta',
+        price: 33,
+      },
+      { name: 'Marmitex', price: 23 },
+    ],
+  },
   {
     id: 'lanches',
     title: 'Lanches',
@@ -57,19 +71,15 @@ export const menu: MenuCategory[] = [
   },
   {
     id: 'espetos',
-    title: 'Espetos especiais',
+    title: 'Espetinhos',
     items: [
-      { name: 'Medalhão de kafta bovina', price: 15 },
-      { name: 'Filé mignon', price: 35 },
+      { name: 'Kafta', price: 15 },
+      { name: 'Frango com bacon' },
+      { name: 'Contra filé' },
       { name: 'Queijo coalho', price: 15 },
-      { name: 'Provolone', price: 15 },
-      { name: 'Costelinha suína', price: 15 },
-      { name: 'Linguiça apimentada', price: 15 },
-      { name: 'Linguiça suína', price: 15 },
-      { name: 'Coração de frango', price: 20 },
-      { name: 'Kafta bovina recheada', price: 15 },
-      { name: 'Cupim Super Grill', price: 27 },
-      { name: 'Espeto de frango empanado', price: 20 },
+      { name: 'Linguiça', price: 15 },
+      { name: 'Costela suína', price: 15 },
+      { name: 'Cupim', price: 27 },
     ],
   },
   {

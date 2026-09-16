@@ -14,10 +14,18 @@ import { menu, formatPrice, type MenuCategory } from '@/lib/menu';
 
 const desktopQuery = '(min-width: 1001px)';
 const desktopColumns = [
-  ['lanches', 'pasteis', 'espetos', 'especial-da-casa', 'acompanhamentos'],
+  [
+    'almoco',
+    'lanches',
+    'pasteis',
+    'espetos',
+    'especial-da-casa',
+    'acompanhamentos',
+  ],
   ['cafeteria', 'quitandas', 'sem-alcool', 'cervejas'],
 ];
 const mobileOrder = [
+  'almoco',
   'lanches',
   'cafeteria',
   'quitandas',
@@ -123,7 +131,13 @@ export function MenuSection() {
                   {item.detail && <p>{item.detail}</p>}
                 </div>
                 <span className="dish-leader" aria-hidden="true" />
-                <span className="dish-price">{formatPrice(item.price)}</span>
+                {item.price === undefined ? (
+                  <span className="dish-price dish-price-consult">
+                    Consulte
+                  </span>
+                ) : (
+                  <span className="dish-price">{formatPrice(item.price)}</span>
+                )}
               </li>
             ))}
           </ul>

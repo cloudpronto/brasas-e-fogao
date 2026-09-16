@@ -1,11 +1,10 @@
-import { publicAsset } from '@/lib/assets';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Clock3, MapPin } from 'lucide-react';
+import { Clock3, MapPin, MessageCircle } from 'lucide-react';
 import { SiteHeader } from '@/components/site-header';
 import { Hero } from '@/components/hero';
 import { SiteFooter } from '@/components/site-footer';
 import { MenuPreview } from '@/components/menu-preview';
+import { EventsTeaser } from '@/components/events-teaser';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { restaurant } from '@/lib/restaurant';
 import { structuredData } from '@/lib/structured-data';
@@ -22,59 +21,14 @@ export default function Home() {
         <div className="welcome-line container">
           <span>Setor Oeste, Goiânia</span>
           <span>
-            Segunda a sábado <i /> 7h às 18h
+            {restaurant.openDays} <i /> 7h às 16h
           </span>
           <Link href="/cardapio" aria-label="Abrir o cardápio completo">
             À mesa
           </Link>
         </div>
         <MenuPreview />
-        <section
-          className="house-section section"
-          id="a-casa"
-          aria-labelledby="house-title"
-        >
-          <div className="container house-layout">
-            <div className="house-picture" data-reveal>
-              <Image
-                unoptimized
-                src={publicAsset('/images/panelas.webp')}
-                alt="Panelas e acompanhamentos preparados pelo Brasas e Fogão"
-                width="1200"
-                height="800"
-                loading="lazy"
-              />
-              <span className="photo-corner">
-                Da nossa cozinha, pra sua mesa.
-              </span>
-            </div>
-            <div className="house-copy" data-reveal>
-              <p className="eyebrow">A casa</p>
-              <h2 className="display-title" id="house-title">
-                A boa comida
-                <br />
-                ganhou endereço.
-              </h2>
-              <p>
-                Nossa história começa na cozinha dos eventos. Agora, o Brasas e
-                Fogão ganha uma casa no Setor Oeste, em Goiânia: um lugar para
-                sentar, comer bem e compartilhar a mesa.
-              </p>
-              <p>
-                Do café aos espetos, das quitandas à feijoada, tem espaço para
-                diferentes fomes e bons encontros.
-              </p>
-              <a
-                className="text-link small-link"
-                href={restaurant.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Conheça nossa história
-              </a>
-            </div>
-          </div>
-        </section>
+        <EventsTeaser />
         <section
           className="location-section section"
           id="localizacao"
@@ -125,13 +79,32 @@ export default function Home() {
                 <div>
                   <h3>Quando chegar</h3>
                   <p className="hours">
-                    <strong>Segunda a sábado</strong>
-                    <span>Das 7h às 18h</span>
+                    <strong>{restaurant.openDays}</strong>
+                    <span>{restaurant.openTime}</span>
                   </p>
                   <p className="location-note">
-                    Um café, uma pausa ou um encontro à mesa.
-                    <br />A gente te espera por aqui.
+                    {restaurant.closedNote}
+                    <br />
+                    Do café ao almoço, a gente te espera.
                   </p>
+                </div>
+              </div>
+              <div className="location-detail">
+                <MessageCircle aria-hidden="true" />
+                <div>
+                  <h3>Fale com a gente</h3>
+                  <p className="hours">
+                    <strong>{restaurant.phone}</strong>
+                    <span>WhatsApp e ligações</span>
+                  </p>
+                  <a
+                    className="button"
+                    href={restaurant.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Chamar no WhatsApp
+                  </a>
                 </div>
               </div>
             </div>

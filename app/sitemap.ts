@@ -15,5 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    {
+      url: `${restaurant.origin}/eventos/`,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
   ];
 }

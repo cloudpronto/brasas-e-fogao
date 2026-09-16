@@ -9,6 +9,7 @@ import './hero-refinement.css';
 import './hero-polish.css';
 import './hero-slider.css';
 import './hero-timer.css';
+import './events.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(restaurant.origin),

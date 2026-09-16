@@ -8,7 +8,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '/brasas-e-fogao';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || `https://cloudpronto.github.io${basePath}`).replace(/\/$/, '');
 const files = readdirSync(out, { recursive: true }).map(String);
 const checked = new Set();
-for (const route of ['index.html', 'cardapio/index.html', '404.html', 'robots.txt', 'sitemap.xml', 'cardapio-brasas-e-fogao.pdf']) {
+for (const route of ['index.html', 'cardapio/index.html', 'eventos/index.html', '404.html', 'robots.txt', 'sitemap.xml', 'cardapio-brasas-e-fogao.pdf']) {
   assert(existsSync(path.join(out, route)), `Missing export: ${route}`);
 }
 for (const file of files.filter((name) => /\.(html|css)$/.test(name))) {
@@ -25,13 +25,14 @@ for (const file of files.filter((name) => /\.(html|css)$/.test(name))) {
     checked.add(url);
   }
 }
-for (const [file, canonical] of [['index.html', `${siteUrl}/`], ['cardapio/index.html', `${siteUrl}/cardapio/`]]) {
+for (const [file, canonical] of [['index.html', `${siteUrl}/`], ['cardapio/index.html', `${siteUrl}/cardapio/`], ['eventos/index.html', `${siteUrl}/eventos/`]]) {
   const html = readFileSync(path.join(out, file), 'utf8');
   assert(html.includes(`rel="canonical" href="${canonical}"`), `Incorrect canonical in ${file}`);
   assert(html.includes('Brasas e Fogão'), `Missing restaurant content: ${file}`);
 }
 const menu = readFileSync(path.join(out, 'cardapio/index.html'), 'utf8');
-assert(menu.includes('Suco Honest') && menu.includes('Choripan ao chimichurri'), 'Missing menu items');
-assert(readFileSync(path.join(out, 'sitemap.xml'), 'utf8').includes(`${siteUrl}/cardapio/`));
+assert(menu.includes('Suco Honest') && menu.includes('Choripan ao chimichurri') && menu.includes('Prato executivo'), 'Missing menu items');
+const sitemap = readFileSync(path.join(out, 'sitemap.xml'), 'utf8');
+assert(sitemap.includes(`${siteUrl}/cardapio/`) && sitemap.includes(`${siteUrl}/eventos/`));
 assert(readFileSync(path.join(out, 'robots.txt'), 'utf8').includes(`${siteUrl}/sitemap.xml`));
-console.log(`Static export verified: ${checked.size} local paths, homepage, menu, PDF, fonts and SEO.`);
+console.log(`Static export verified: ${checked.size} local paths, homepage, menu, events, PDF, fonts and SEO.`);

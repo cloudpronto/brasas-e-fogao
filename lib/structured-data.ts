@@ -20,19 +20,13 @@ export const structuredData = {
     postalCode: restaurant.postalCode,
     addressCountry: 'BR',
   },
+  telephone: restaurant.phoneE164,
   hasMap: restaurant.mapsUrl,
-  servesCuisine: ['Brasileira'],
+  servesCuisine: ['Brasileira', 'Churrasco'],
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-      ],
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
       opens: '07:00',
       closes: '16:00',
     },
@@ -51,11 +45,15 @@ export const structuredData = {
         '@type': 'MenuItem',
         name: item.name,
         ...(item.detail ? { description: item.detail } : {}),
-        offers: {
-          '@type': 'Offer',
-          price: item.price.toFixed(2),
-          priceCurrency: 'BRL',
-        },
+        ...(item.price === undefined
+          ? {}
+          : {
+              offers: {
+                '@type': 'Offer',
+                price: item.price.toFixed(2),
+                priceCurrency: 'BRL',
+              },
+            }),
       })),
     })),
   },
