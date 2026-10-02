@@ -6,9 +6,15 @@ import { SiteFooter } from '@/components/site-footer';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { eventPhoto, eventServiceGroups, eventServices } from '@/lib/events';
 import { restaurant, whatsappLink } from '@/lib/restaurant';
+import { shareImage } from '@/lib/og';
 
 const description =
   'Churrasco, fogo de chão, parrilla e porco no rolete. O Brasas e Fogão nasceu servindo eventos e está preparando sua casa no Setor Oeste, em Goiânia, para receber o seu.';
+
+const eventsShareImage = shareImage(
+  'eventos',
+  'Eventos do Brasas e Fogão — churrasco no fogo de chão',
+);
 
 export const metadata: Metadata = {
   title: 'Eventos | Brasas e Fogão em Goiânia',
@@ -21,7 +27,13 @@ export const metadata: Metadata = {
     description,
     url: `${restaurant.origin}/eventos/`,
     siteName: restaurant.name,
-    images: [`${restaurant.origin}${eventPhoto.src}`],
+    images: [eventsShareImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Traga seu evento para o Brasas e Fogão',
+    description,
+    images: [eventsShareImage],
   },
 };
 

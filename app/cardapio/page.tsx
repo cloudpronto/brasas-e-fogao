@@ -4,6 +4,13 @@ import { SiteFooter } from '@/components/site-footer';
 import { MenuSection } from '@/components/menu-section';
 import { restaurant } from '@/lib/restaurant';
 import { structuredData } from '@/lib/structured-data';
+import { shareImage } from '@/lib/og';
+
+const menuShareImage = shareImage(
+  'cardapio',
+  'Cardápio do Brasas e Fogão — choripan ao chimichurri',
+);
+
 export const metadata: Metadata = {
   title: 'Cardápio | Brasas e Fogão em Goiânia',
   description:
@@ -17,7 +24,14 @@ export const metadata: Metadata = {
       'Lanches, cafeteria, quitandas, pastéis, espetos, acompanhamentos e bebidas no Setor Oeste.',
     url: `${restaurant.origin}/cardapio/`,
     siteName: restaurant.name,
-    images: [`${restaurant.origin}/images/choripan-hero.webp`],
+    images: [menuShareImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cardápio do Brasas e Fogão em Goiânia',
+    description:
+      'Lanches, cafeteria, quitandas, pastéis, espetos, acompanhamentos e bebidas no Setor Oeste.',
+    images: [menuShareImage],
   },
 };
 

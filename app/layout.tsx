@@ -2,6 +2,7 @@ import { publicAsset } from '@/lib/assets';
 import type { Metadata } from 'next';
 import { restaurant } from '@/lib/restaurant';
 import { fontFaceCss } from '@/lib/fonts';
+import { shareImage } from '@/lib/og';
 import './globals.css';
 import './sections.css';
 import './menu-pages.css';
@@ -10,6 +11,11 @@ import './hero-polish.css';
 import './hero-slider.css';
 import './hero-timer.css';
 import './events.css';
+
+const homeShareImage = shareImage(
+  'home',
+  'Brasas e Fogão — feijoada servida no Setor Oeste, em Goiânia',
+);
 
 export const metadata: Metadata = {
   metadataBase: new URL(restaurant.origin),
@@ -23,11 +29,13 @@ export const metadata: Metadata = {
     description: restaurant.description,
     url: restaurant.origin,
     siteName: restaurant.name,
+    images: [homeShareImage],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Brasas e Fogão — Goiânia',
     description: restaurant.description,
+    images: [homeShareImage],
   },
   icons: { icon: publicAsset('/favicon.svg') },
 };
