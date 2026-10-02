@@ -6,8 +6,7 @@ export const restaurant = {
   description:
     'Boa comida e bons encontros. Cafeteria, quitandas, almoço com churrasco e feijoada no Setor Oeste, em Goiânia.',
   origin: (
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    'https://brasas-e-fogao-brasa-noturna.diipass.chatgpt.site'
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://brasasefogao.com.br'
   ).replace(/\/$/, ''),
   street: 'Rua 22, 658 — quadra K9, lote 05',
   neighborhood: 'Setor Oeste',

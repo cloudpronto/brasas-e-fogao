@@ -65,3 +65,14 @@ O workflow `.github/workflows/pages.yml` instala as dependências, gera a export
 - `npm run dev` e `npm run build`: continuam usando Vinext para desenvolvimento e Sites / Cloudflare Workers.
 
 O build do Pages usa Next.js, imagens locais sem otimização no servidor, fontes locais e URLs com o prefixo `/brasas-e-fogao`. O workflow obtém `NEXT_PUBLIC_BASE_PATH` e `NEXT_PUBLIC_SITE_URL` da configuração do Pages. Para testar outro domínio ou caminho, defina essas variáveis antes do build. O build local usa o endereço acima por padrão.
+
+## Cloudflare Workers (brasasefogao.com.br)
+
+Site: https://brasasefogao.com.br/
+
+O domínio próprio serve a mesma exportação estática do Next.js, sem o Vinext em produção. O Worker `brasas-e-fogao` só entrega os arquivos de `out/`.
+
+- `npm run build:cloudflare`: gera e valida `out/` para a raiz do domínio (sem prefixo, com `https://brasasefogao.com.br` no canonical e no sitemap).
+- `npm run deploy:cloudflare`: publica `out/` usando `wrangler.static.jsonc`.
+
+No painel da Cloudflare (Workers > brasas-e-fogao > Configurações > Build), o comando de build deve ser `npm run build:cloudflare` e o de deploy `npx wrangler deploy --config wrangler.static.jsonc`.

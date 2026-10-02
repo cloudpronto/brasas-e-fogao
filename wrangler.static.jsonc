@@ -1,0 +1,17 @@
+// Deploy do site estático (pasta `out/`) no Cloudflare Workers.
+// Build: npm run build:cloudflare
+// Deploy: npx wrangler deploy --config wrangler.static.jsonc
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "brasas-e-fogao",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "brasasefogao.com.br", "custom_domain": true },
+    { "pattern": "www.brasasefogao.com.br", "custom_domain": true }
+  ]
+}
