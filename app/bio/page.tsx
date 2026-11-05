@@ -172,7 +172,7 @@ export default function BioPage() {
 
         <div className="bio-cards">
           <a
-            href={publicAsset(bio.siteLink.href)}
+            href={bio.siteLink.href}
             className="bio-reveal bio-focus bio-card bio-card-site"
             style={{ animationDelay: '320ms' }}
           >

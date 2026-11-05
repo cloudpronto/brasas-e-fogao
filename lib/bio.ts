@@ -10,9 +10,9 @@ export const bio = {
   services: 'Churrasco • Parrilla • Fogo de chão • Risotos',
   badge: 'Atendimento personalizado para festas e eventos',
 
-  /** Botão 1 — leva para o site (página inicial). */
+  /** Botão 1 — leva para o cardápio do site oficial. */
   siteLink: {
-    href: '/',
+    href: 'https://brasasefogao.com.br/cardapio/',
     title: 'Conheça nosso site e cardápio completo',
     subtitle: 'Veja nossos serviços, eventos e gastronomia preparada ao vivo',
   },
@@ -20,7 +20,7 @@ export const bio = {
   /** Botão 2 — WhatsApp com mensagem pronta. */
   whatsappLink: {
     href: whatsappLink(
-      'Olá! Gostaria de solicitar um orçamento para meu evento.',
+      'Olá! Vim pelo Instagram e gostaria de saber mais sobre o cardápio e os serviços.',
     ),
     title: 'Desejo fazer meu pedido via WhatsApp',
     subtitle: 'Fale diretamente com a equipe Brasas & Fogão',
