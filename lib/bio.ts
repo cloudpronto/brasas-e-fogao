@@ -20,7 +20,7 @@ export const bio = {
   /** Botão 2 — WhatsApp com mensagem pronta. */
   whatsappLink: {
     href: whatsappLink(
-      'Olá! Vim pelo Instagram e gostaria de saber mais sobre o cardápio e os serviços.',
+      'Olá! Gostaria de saber mais sobre o cardápio e os serviços.',
     ),
     title: 'Desejo fazer meu pedido via WhatsApp',
     subtitle: 'Fale diretamente com a equipe Brasas & Fogão',
