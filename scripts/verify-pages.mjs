@@ -8,7 +8,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '/brasas-e-fogao';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || `https://cloudpronto.github.io${basePath}`).replace(/\/$/, '');
 const files = readdirSync(out, { recursive: true }).map(String);
 const checked = new Set();
-for (const route of ['index.html', 'cardapio/index.html', 'eventos/index.html', '404.html', 'robots.txt', 'sitemap.xml', 'cardapio-brasas-e-fogao.pdf']) {
+for (const route of ['index.html', 'cardapio/index.html', 'eventos/index.html', 'bio/index.html', '404.html', 'robots.txt', 'sitemap.xml', 'cardapio-brasas-e-fogao.pdf']) {
   assert(existsSync(path.join(out, route)), `Missing export: ${route}`);
 }
 for (const file of files.filter((name) => /\.(html|css)$/.test(name))) {
