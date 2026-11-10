@@ -26,6 +26,18 @@ export const bio = {
     subtitle: 'Fale diretamente com a equipe Brasas & Fogão',
   },
 
+  ifoodLink: {
+    href: 'https://www.ifood.com.br/delivery/goiania-go/brasas-e-fogao-st-oeste/3b7ea151-bcac-4f21-b59c-e24235dc0433',
+    title: 'Faça seu pedido pelo iFood',
+    subtitle: 'Acesse nosso cardápio e peça pelo iFood',
+  },
+
+  food99Link: {
+    href: 'https://oia.99app.com/dlp9/elw9h2',
+    title: 'Faça seu pedido pela 99Food',
+    subtitle: 'Acesse nosso cardápio e peça pela 99Food',
+  },
+
   instagramUrl: restaurant.instagramUrl,
   whatsappUrl: restaurant.whatsappUrl,
   phone: restaurant.phone,
