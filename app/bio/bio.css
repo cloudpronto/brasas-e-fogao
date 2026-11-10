@@ -133,7 +133,12 @@
   margin: 1rem auto 0;
   height: 1px;
   width: 6rem;
-  background: linear-gradient(to right, transparent, var(--bio-ember), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--bio-ember),
+    transparent
+  );
 }
 
 .bio-services {
@@ -169,8 +174,8 @@
 /* Botões principais */
 .bio-cards {
   margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-auto-rows: 1fr;
   gap: 1rem;
 }
 
@@ -218,7 +223,13 @@
   margin-left: 0.25rem;
 }
 
-.bio-card-whatsapp {
+.bio-card-ifood > .bio-delivery-mark {
+  margin-left: 0.25rem;
+  color: var(--bio-ember);
+}
+
+.bio-card-whatsapp,
+.bio-card-food99 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
   background: var(--bio-ember-bright);
@@ -226,9 +237,14 @@
   box-shadow: 0 14px 36px -18px rgb(255 122 26 / 0.6);
 }
 
-.bio-card-whatsapp:hover {
+.bio-card-whatsapp:hover,
+.bio-card-food99:hover {
   box-shadow: 0 16px 44px -14px rgb(255 122 26 / 0.75);
   filter: brightness(1.04);
+}
+
+.bio-card-food99 > .bio-delivery-mark {
+  margin-left: 0.25rem;
 }
 
 .bio-card-text {
@@ -245,7 +261,8 @@
   letter-spacing: 0.04em;
 }
 
-.bio-card-whatsapp .bio-card-title {
+.bio-card-whatsapp .bio-card-title,
+.bio-card-food99 .bio-card-title {
   font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.25;
@@ -259,7 +276,8 @@
   color: rgb(244 232 213 / 0.6);
 }
 
-.bio-card-whatsapp .bio-card-sub {
+.bio-card-whatsapp .bio-card-sub,
+.bio-card-food99 .bio-card-sub {
   color: rgb(11 13 15 / 0.75);
 }
 
@@ -297,6 +315,37 @@
   height: 1.5rem;
 }
 
+.bio-delivery-mark {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.bio-delivery-mark-small {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.bio-ifood-mark {
+  width: 75%;
+  height: 75%;
+  fill: currentColor;
+}
+
+.bio-food99-mark {
+  display: block;
+  background: currentColor;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 160%;
+  mask-size: 160%;
+}
+
 .bio-ember {
   color: var(--bio-ember);
 }
@@ -319,9 +368,10 @@
   padding: 0;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.25rem;
 }
 
 .bio-social-link {
@@ -406,7 +456,17 @@
   }
 }
 
+@media (min-width: 360px) {
+  .bio-social ul {
+    gap: 0.5rem;
+  }
+}
+
 @media (min-width: 640px) {
+  .bio-social ul {
+    gap: 0.75rem;
+  }
+
   .bio-logo {
     width: 150px;
     height: 150px;

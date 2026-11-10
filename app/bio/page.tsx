@@ -3,6 +3,7 @@ import { ArrowRight, Flame, MessageCircle, Phone } from 'lucide-react';
 import { bio } from '@/lib/bio';
 import { publicAsset } from '@/lib/assets';
 import { restaurant } from '@/lib/restaurant';
+import { Food99Mark, IFoodMark } from './delivery-icons';
 import './bio.css';
 
 const title = 'Brasas & Fogão | Links oficiais';
@@ -111,6 +112,20 @@ const secondaryLinks = [
     Icon: () => <Phone className="bio-icon" aria-hidden="true" />,
     external: false,
   },
+  {
+    href: bio.ifoodLink.href,
+    label: 'Pedir pelo iFood',
+    short: 'iFood',
+    Icon: () => <IFoodMark small />,
+    external: true,
+  },
+  {
+    href: bio.food99Link.href,
+    label: 'Pedir pela 99Food',
+    short: '99Food',
+    Icon: () => <Food99Mark small />,
+    external: true,
+  },
 ];
 
 export default function BioPage() {
@@ -202,6 +217,40 @@ export default function BioPage() {
             <span className="bio-card-text">
               <span className="bio-card-title">{bio.whatsappLink.title}</span>
               <span className="bio-card-sub">{bio.whatsappLink.subtitle}</span>
+            </span>
+            <ArrowRight className="bio-icon bio-arrow" aria-hidden="true" />
+          </a>
+
+          <a
+            href={bio.ifoodLink.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bio-reveal bio-focus bio-card bio-card-site bio-card-ifood"
+            style={{ animationDelay: '440ms' }}
+          >
+            <span className="bio-card-bar" />
+            <IFoodMark />
+            <span className="bio-card-text">
+              <span className="bio-card-title">{bio.ifoodLink.title}</span>
+              <span className="bio-card-sub">{bio.ifoodLink.subtitle}</span>
+            </span>
+            <ArrowRight
+              className="bio-icon bio-arrow bio-ember"
+              aria-hidden="true"
+            />
+          </a>
+
+          <a
+            href={bio.food99Link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bio-reveal bio-focus bio-card bio-card-food99"
+            style={{ animationDelay: '500ms' }}
+          >
+            <Food99Mark />
+            <span className="bio-card-text">
+              <span className="bio-card-title">{bio.food99Link.title}</span>
+              <span className="bio-card-sub">{bio.food99Link.subtitle}</span>
             </span>
             <ArrowRight className="bio-icon bio-arrow" aria-hidden="true" />
           </a>
